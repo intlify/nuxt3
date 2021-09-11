@@ -1,0 +1,13 @@
+dist
+temp
+coverage
+node_modules
+.DS_Store
+.idea
+.vscode
+debug.log
+
+*.log
+*.swp
+*~
+.env
