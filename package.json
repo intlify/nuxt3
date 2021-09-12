@@ -17,12 +17,12 @@
   },
   "sideEffects": false,
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs"
+    "require": "./dist/module.js",
+    "import": "./dist/module.mjs"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/module.js",
+  "module": "./dist/module.mjs",
+  "types": "./dist/module.d.ts",
   "files": [
     "dist/*.js",
     "dist/*.mjs",
@@ -31,7 +31,7 @@
   "scripts": {
     "build": "npm-run-all --parallel build:*",
     "build:module": "siroc build",
-    "build:plguin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm",
+    "build:plugin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
     "fix": "npm-run-all --parallel lint:fix format:fix",
