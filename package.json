@@ -29,8 +29,9 @@
     "dist/*.d.ts"
   ],
   "scripts": {
-    "build": "siroc",
-    "dev": "siroc dev",
+    "build": "npm-run-all --parallel build:*",
+    "build:module": "siroc build",
+    "build:plguin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
     "fix": "npm-run-all --parallel lint:fix format:fix",
@@ -58,7 +59,7 @@
     ]
   },
   "dependencies": {
-    "@nuxt/kit": "^0.6.4"
+    "@nuxt/kit-edge": "^0.10.0-27187887.4cd6d80"
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^3.0.0",
