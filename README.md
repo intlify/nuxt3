@@ -14,7 +14,7 @@ It also has the purpose of finding issues on the vue-i18n-next so that `@nuxtjs/
   - You do not need to set up with `createI18n`.
 - setup bundle tools
   - `@intlify/vue-i18n-loader` and `@intlify/vite-plugin-vue-i18n` are included
-- setup `@intlify/vue-i18n-extendsion`
+- setup `@intlify/vue-i18n-extendsions`
 
 ## 🚀 Usage
 
