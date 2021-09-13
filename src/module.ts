@@ -2,11 +2,13 @@ import {
   defineNuxtModule,
   addPlugin,
   addTemplate,
-  extendWebpackConfig
+  extendWebpackConfig,
+  extendViteConfig
 } from '@nuxt/kit-edge' // TODO: '@nuxt/kit'
 import { resolve } from 'upath'
 import { readFile } from 'fs/promises'
 import { isString } from '@intlify/shared'
+import VitePlugin from '@intlify/vite-plugin-vue-i18n'
 import type { I18nOptions } from 'vue-i18n'
 
 /**
@@ -31,8 +33,6 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   configKey: 'intlify',
   defaults: {},
   setup(options, nuxt) {
-    console.log('Nuxt Module setup', options, nuxt)
-
     // transpile vue-i18n
     // nuxt.options.build.transpile.push('vue-i18n')
 
@@ -80,8 +80,14 @@ export default ${name}
       })
     })
 
-    // TODO: should install @intlify/vite-plugin-vue-i18n
-    //
+    // install @intlify/vite-plugin-vue-i18n
+    extendViteConfig(config => {
+      config.plugins.push(
+        VitePlugin({
+          compositionOnly: false
+        })
+      )
+    })
   }
 })
 
