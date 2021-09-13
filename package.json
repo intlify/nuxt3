@@ -32,15 +32,15 @@
     "build": "npm-run-all --parallel build:*",
     "build:module": "siroc build",
     "build:plugin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm",
-    "release:prepare": "shipjs prepare",
-    "release:trigger": "shipjs trigger",
     "fix": "npm-run-all --parallel lint:fix format:fix",
     "format:fix": "npm-run-all --parallel \"format:prettier --write\"",
     "format:prettier": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
     "lint": "npm-run-all --parallel lint:secret lint:codes",
     "lint:codes": "eslint ./src --ext .js,.ts,.vue,.json",
     "lint:fix": "npm-run-all --parallel \"lint:codes --fix\"",
-    "lint:secret": "secretlint \"**/*\""
+    "lint:secret": "secretlint \"**/*\"",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger"
   },
   "lint-staged": {
     "*.{json,md,yml}": [
@@ -59,10 +59,11 @@
     ]
   },
   "dependencies": {
-    "@nuxt/kit-edge": "^0.10.0-27187887.4cd6d80"
+    "@intlify/vue-i18n-loader": "^3.0.0",
+    "@nuxt/kit-edge": "^0.10.0-27187887.4cd6d80",
+    "vue-i18n": "^9.2.0-beta.3"
   },
   "devDependencies": {
-    "@intlify/vue-i18n-loader": "^3.0.0",
     "@kazupon/lerna-changelog": "^4.3.0",
     "@nuxt/types": "^2.15.8",
     "@secretlint/secretlint-rule-preset-recommend": "^3.1.0",
@@ -78,7 +79,6 @@
     "shipjs": "^0.23.3",
     "siroc": "^0.16.0",
     "typescript": "^4.4.3",
-    "vue-i18n": "^9.2.0-beta.3",
     "yorkie": "^2.0.0"
   },
   "changelog": {

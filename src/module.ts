@@ -13,6 +13,9 @@ const IntlifyModule = defineNuxtModule<I18nOptions>({
   setup(option, nuxt) {
     console.log('Nuxt Module setup', option, nuxt)
 
+    // transpile vue-i18n
+    // nuxt.options.build.transpile.push('vue-i18n')
+
     // TODO: should add template for `createI18n` options
     //
 
