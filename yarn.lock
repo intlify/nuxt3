@@ -187,7 +187,7 @@
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.1.7.tgz#e7d8bc90cb59dc17dd7b4c85a73db16fcb7891fc"
   integrity sha512-zt0zlUdalumvT9AjQNxPXA36UgOndUyvBMplh8uRZU0fhWHAwhnJTcf0NaG9Qvr8I1n3HPSs96+kLb/YdwTavQ==
 
-"@intlify/shared@9.2.0-beta.3":
+"@intlify/shared@9.2.0-beta.3", "@intlify/shared@^9.2.0-beta.3":
   version "9.2.0-beta.3"
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.2.0-beta.3.tgz#0de91533a0483db601e1931408213b1d49f36b07"
   integrity sha512-oZV5m7Iib6NzxOUxpUg6i7xAo1eXHKsuSx8ykijZhUugqQSzDRLxq+5PUN0ww2acxtKANvX6bbUb8oiKTtkN4g==

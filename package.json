@@ -59,8 +59,10 @@
     ]
   },
   "dependencies": {
+    "@intlify/shared": "^9.2.0-beta.3",
     "@intlify/vue-i18n-loader": "^3.0.0",
     "@nuxt/kit-edge": "^0.10.0-27187887.4cd6d80",
+    "upath": "^2.0.1",
     "vue-i18n": "^9.2.0-beta.3"
   },
   "devDependencies": {
