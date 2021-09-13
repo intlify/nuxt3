@@ -57,7 +57,7 @@ export default ${name}
         filename: 'intlify.options.mjs',
         async getContents() {
           const file = await readFile(
-            resolve(nuxt.options.srcDir, options.vueI18n),
+            resolve(nuxt.options.rootDir, options.vueI18n),
             'utf-8'
           )
           // TODO: check file content, whether it's valid async syntax
