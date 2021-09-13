@@ -1,6 +1,7 @@
 import {
   defineNuxtModule,
   addPlugin,
+  addTemplate,
   extendWebpackConfig
 } from '@nuxt/kit-edge' // TODO: '@nuxt/kit'
 import path from 'path'
@@ -12,13 +13,23 @@ const IntlifyModule = defineNuxtModule<I18nOptions>({
   setup(option, nuxt) {
     console.log('Nuxt Module setup', option, nuxt)
 
-    // TODO: should add template option rendering for plugin
+    // TODO: should add template for `createI18n` options
     //
+
+    // TODO: should add template for functionnable options (e.g. `modifiers` option)
+    //
+
+    // add locale message template
+    addTemplate({
+      filename: 'intlify.locale.messages.mjs',
+      // TODO: should be generated for locale message with message-compiler
+      getContents: () =>
+        'export default ' + JSON.stringify(option.messages || {})
+    })
 
     // add plugin
     addPlugin({
       src: path.resolve(__dirname, './plugin.mjs')
-      // fileName: path.join('@intlify/nuxt3', 'plugin.mjs')
     })
 
     // install @intlify/vue-i18n-loader
