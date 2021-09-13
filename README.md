@@ -28,11 +28,11 @@ npm install --save-dev @intlify/nuxt3
 yarn add -D @intlify/nuxt3
 ```
 
-After installed, add `@intlify/nuxt3` module to `buildModules` options of `nuxt.confg.[ts|js]`
+After that, you need to add `@intlify/nuxt3` module to `buildModules` options of `nuxt.confg.[ts|js]`
 
 ```js
 export default {
-  buildModules: [['@intlify/nuxt3']]
+  buildModules: ['@intlify/nuxt3']
 }
 ```
 
