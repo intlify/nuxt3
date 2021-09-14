@@ -7,15 +7,22 @@ import { defineNuxtPlugin } from '#app'
 // @ts-ignore: resolved with Nuxt
 import optionsLoader from '#build/intlify.options.mjs'
 
-// async function plugin(nuxt: any, arg2: any) {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: resolved with Nuxt
+import messages from '#build/intlify.locales.mjs'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isEmpty = (obj: any) => Object.keys(obj).length === 0
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default defineNuxtPlugin(async (nuxt: any) => {
-  console.log('nuxt plugin', nuxt)
   const { app } = nuxt
 
   const loadedOptions = await optionsLoader()
-  console.log('loadedOptions', loadedOptions)
+  if (!isEmpty(messages)) {
+    loadedOptions.messages = messages
+  }
 
-  // TODO: more implementation !!
   const i18n = createI18n({
     legacy: false,
     globalInjection: true,
@@ -24,5 +31,3 @@ export default defineNuxtPlugin(async (nuxt: any) => {
   })
   app.use(i18n)
 })
-
-// export default plugin

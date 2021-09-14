@@ -10,11 +10,11 @@ This nuxt module is intended to be a quick and easy way for people to use vue-i1
 
 It also has the purpose of finding issues on the vue-i18n-next so that `@nuxtjs/i18n` can support Nuxt3.
 
-- setup `vue-i18n` for your Nuxt3 project
+- Setup `vue-i18n` for your Nuxt3 project
   - You do not need to entrypoint codes with `createI18n`.
-- setup bundle tools
+- Setup bundle tools
   - `@intlify/vue-i18n-loader` and `@intlify/vite-plugin-vue-i18n` are included
-- setup `@intlify/vue-i18n-extendsions`
+- Locale resources importing
 
 ## 💿 Installation
 
@@ -52,6 +52,12 @@ export interface IntlifyModuleOptions {
    * The path should be relative to the Nuxt project.
    */
   vueI18n?: I18nOptions | string
+  /**
+   * Define the directory where your locale messages files will be placed.
+   *
+   * If you don't specify this option, default value is `locales`
+   */
+  localeDir?: string
 }
 ```
 
@@ -83,7 +89,7 @@ export default {
 
 If you specify the path to `intlify.vueI18n`, you need to set it to a file in `mjs` format.
 
-The following nuxt.confg:
+The following nuxt.config:
 
 ```js
 export default {
@@ -112,6 +118,41 @@ export default async () => ({
   }
 })
 ```
+
+## 📁 Locale resources importing
+
+You can load the locale resources stored in the file from the directory specified in `intlify.localeDir`.
+
+The following is an example of the nuxt.conf:
+
+```js
+export default {
+  // ...
+  buildModules: ['@intlify/nuxt3'],
+  // config for `@intlify/nuxt3`
+  intlify: {
+    localeDir: 'locales', // set the `locales` directory at source directory of your Nuxt application
+    vueI18n: {
+      // ...
+    }
+  }
+}
+```
+
+The following is a set of files of locale resources defined in the directory:
+
+```sh
+-| app/
+---| nuxt.config.js
+---| package.json
+---| locales/
+------| en.json/
+------| ja.json/
+```
+
+The locale messages defined above will be loaded by the `@intlify/nuxt3` module and set to the `messages` option of `createI18n` on the module side.
+
+Each locale in the `messages` option is defined as a file name without its extension.
 
 ## ©️ LICENSE
 

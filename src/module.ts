@@ -7,8 +7,10 @@ import {
 } from '@nuxt/kit-edge' // TODO: '@nuxt/kit'
 import { resolve } from 'upath'
 import { readFile } from 'fs/promises'
+import { existsSync } from 'fs'
 import { isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
+import { resolveLocales } from './utils'
 import type { I18nOptions } from 'vue-i18n'
 
 /**
@@ -22,6 +24,12 @@ export interface IntlifyModuleOptions {
    * The path should be relative to the Nuxt project.
    */
   vueI18n?: I18nOptions | string
+  /**
+   * Define the directory where your locale messages files will be placed.
+   *
+   * If you don't specify this option, default value is `locales`
+   */
+  localeDir?: string
 }
 
 export function defineVueI18n(options: I18nOptions): I18nOptions {
@@ -32,14 +40,19 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   name: '@intlify/nuxt3',
   configKey: 'intlify',
   defaults: {},
-  setup(options, nuxt) {
+  async setup(options, nuxt) {
     // transpile vue-i18n
     // nuxt.options.build.transpile.push('vue-i18n')
 
-    // TODO: should add locale loader from i18n resources
-    //
+    const localeDir = options.localeDir || 'locales'
+    const localePath = resolve(nuxt.options.srcDir, localeDir)
+    const hasLocaleFiles = existsSync(localePath)
+    if (!hasLocaleFiles) {
+      return
+    }
+    const localeResources = (await resolveLocales(localePath)) || []
 
-    // add locale message template
+    // add vue-i18n options template
     if (!isString(options.vueI18n)) {
       addTemplate({
         filename: 'intlify.options.mjs',
@@ -71,8 +84,32 @@ export default ${name}
       src: resolve(__dirname, './plugin.mjs')
     })
 
+    // add locale messages template
+    addTemplate({
+      filename: 'intlify.locales.mjs',
+      getContents: ({ utils }) => {
+        const importMapper = new Map<string, string>()
+        localeResources.forEach(({ locale }) => {
+          importMapper.set(locale, utils.importName(`locale_${locale}`))
+        })
+        // prettier-ignore
+        return `
+${localeResources.map(l => `import ${importMapper.get(l.locale)} from '${l.path}'`).join('\n')}
+export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`).join(',')} }
+`
+      }
+    })
+
     // install @intlify/vue-i18n-loader
     extendWebpackConfig(config => {
+      if (hasLocaleFiles) {
+        config.module?.rules.push({
+          test: /\.(json5?|ya?ml)$/,
+          type: 'javascript/auto',
+          loader: '@intlify/vue-i18n-loader',
+          include: [localePath]
+        })
+      }
       config.module?.rules.push({
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
@@ -82,11 +119,14 @@ export default ${name}
 
     // install @intlify/vite-plugin-vue-i18n
     extendViteConfig(config => {
-      config.plugins.push(
-        VitePlugin({
-          compositionOnly: false
-        })
-      )
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const viteOptions: any = {
+        compositionOnly: false
+      }
+      if (hasLocaleFiles) {
+        viteOptions['include'] = resolve(localePath, './**')
+      }
+      config.plugins.push(VitePlugin(viteOptions))
     })
   }
 })
