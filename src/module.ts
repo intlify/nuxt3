@@ -47,9 +47,6 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)
     const hasLocaleFiles = existsSync(localePath)
-    if (!hasLocaleFiles) {
-      return
-    }
     const localeResources = (await resolveLocales(localePath)) || []
 
     // add vue-i18n options template
