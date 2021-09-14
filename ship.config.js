@@ -36,7 +36,7 @@ async function commitChangelog(current, next) {
 }
 
 module.exports = {
-  mergeStrategy: { toSameBranch: ['master'] },
+  mergeStrategy: { toSameBranch: ['main'] },
   monorepo: undefined,
   updateChangelog: false,
   buildCommand: ({ isYarn }) => "echo 'none build'",
