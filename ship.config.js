@@ -39,7 +39,7 @@ module.exports = {
   mergeStrategy: { toSameBranch: ['main'] },
   monorepo: undefined,
   updateChangelog: false,
-  buildCommand: ({ isYarn }) => "echo 'none build'",
+  buildCommand: ({ isYarn }) => 'yarn build',
   beforeCommitChanges: ({ nextVersion, exec, dir }) => {
     return new Promise(resolve => {
       const pkg = require('./package.json')

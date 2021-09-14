@@ -24,9 +24,10 @@
   "module": "./dist/module.mjs",
   "types": "./dist/module.d.ts",
   "files": [
-    "dist/*.js",
-    "dist/*.mjs",
-    "dist/*.d.ts"
+    "dist/module.js",
+    "dist/module.mjs",
+    "dist/plugin.mjs",
+    "dist/module.d.ts"
   ],
   "scripts": {
     "build": "npm-run-all --parallel build:*",
