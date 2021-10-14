@@ -12,8 +12,6 @@ import VitePlugin from '@intlify/vite-plugin-vue-i18n'
 import { resolveLocales } from './utils'
 import type { I18nOptions } from 'vue-i18n'
 
-const __dirname = dirname(new URL(import.meta.url).pathname)
-
 /**
  * `@intlify/nuxt3` module options definition
  */

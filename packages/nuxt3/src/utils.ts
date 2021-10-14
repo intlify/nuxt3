@@ -1,5 +1,5 @@
 import { resolveFiles } from '@nuxt/kit'
-import { parse } from 'upath'
+import { parse } from 'pathe'
 
 export type LocaleInfo = {
   locale: string
