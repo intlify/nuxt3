@@ -1,3 +1,13 @@
+## v0.1.3 (2021-10-14)
+
+#### :zap: Improvement Features
+
+- [#6](https://github.com/intlify/nuxt3/pull/6) fix: build errors for nuxt3 public release ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.1.2 (2021-09-14)
 
 #### :bug: Bug Fixes
