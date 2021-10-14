@@ -4,14 +4,15 @@ import {
   addTemplate,
   extendWebpackConfig,
   extendViteConfig
-} from '@nuxt/kit-edge' // TODO: '@nuxt/kit'
-import { resolve } from 'upath'
-import { readFile } from 'fs/promises'
-import { existsSync } from 'fs'
+} from '@nuxt/kit'
+import { resolve, dirname } from 'pathe'
+import { promises as fs, existsSync } from 'fs'
 import { isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
 import { resolveLocales } from './utils'
 import type { I18nOptions } from 'vue-i18n'
+
+const __dirname = dirname(new URL(import.meta.url).pathname)
 
 /**
  * `@intlify/nuxt3` module options definition
@@ -41,8 +42,7 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   configKey: 'intlify',
   defaults: {},
   async setup(options, nuxt) {
-    // transpile vue-i18n
-    // nuxt.options.build.transpile.push('vue-i18n')
+    nuxt.options.alias['vue-i18n'] = 'vue-i18n/index.mjs'
 
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)
@@ -66,8 +66,8 @@ export default ${name}
       addTemplate({
         filename: 'intlify.options.mjs',
         async getContents() {
-          const file = await readFile(
-            resolve(nuxt.options.rootDir, options.vueI18n),
+          const file = await fs.readFile(
+            resolve(nuxt.options.rootDir, options.vueI18n as string),
             'utf-8'
           )
           // TODO: check file content, whether it's valid async syntax
