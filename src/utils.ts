@@ -1,4 +1,4 @@
-import { resolveFiles } from '@nuxt/kit-edge' // TODO: change to @nuxt/kit
+import { resolveFiles } from '@nuxt/kit'
 import { parse } from 'upath'
 
 export type LocaleInfo = {
