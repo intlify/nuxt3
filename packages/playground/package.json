@@ -1,6 +1,17 @@
 {
   "name": "@intlify/nuxt3-playground",
+  "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intlify/nuxt3.git",
+    "directory": "packages/playground"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "kazuya kawaguchi",
+    "email": "kawakazu80@gmail.com"
+  },
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
