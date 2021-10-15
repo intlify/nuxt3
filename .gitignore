@@ -6,8 +6,13 @@ node_modules
 .idea
 .vscode
 debug.log
+.nuxt
 
 *.log
 *.swp
 *~
 .env
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
