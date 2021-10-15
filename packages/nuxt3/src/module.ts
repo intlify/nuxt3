@@ -5,7 +5,7 @@ import {
   extendWebpackConfig,
   extendViteConfig
 } from '@nuxt/kit'
-import { resolve, dirname } from 'pathe'
+import { resolve } from 'pathe'
 import { promises as fs, existsSync } from 'fs'
 import { isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
@@ -98,6 +98,7 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
     // install @intlify/vue-i18n-loader
     extendWebpackConfig(config => {
       if (hasLocaleFiles) {
+        // @ts-ignore TODO
         config.module?.rules.push({
           test: /\.(json5?|ya?ml)$/,
           type: 'javascript/auto',
@@ -105,6 +106,7 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
           include: [localePath]
         })
       }
+      // @ts-ignore TODO
       config.module?.rules.push({
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
@@ -121,6 +123,7 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
       if (hasLocaleFiles) {
         viteOptions['include'] = resolve(localePath, './**')
       }
+      // @ts-ignore TODO
       config.plugins.push(VitePlugin(viteOptions))
     })
   }

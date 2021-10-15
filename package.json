@@ -58,9 +58,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "resolutions": {
-    "@intlify/nuxt3": "workspace:./packages/nuxt3"
-  },
   "private": true,
   "scripts": {
     "fix": "run-p lint:fix format:fix",
