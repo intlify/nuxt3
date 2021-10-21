@@ -40,7 +40,9 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   configKey: 'intlify',
   defaults: {},
   async setup(options, nuxt) {
-    nuxt.options.alias['vue-i18n'] = 'vue-i18n/index.mjs'
+    nuxt.options.alias['vue-i18n'] = 'vue-i18n/dist/vue-i18n.esm-bundler.js'
+    // nuxt.options.alias['vue-i18n'] = 'vue-i18n/index.mjs'
+    nuxt.options.build.transpile.push('vue-i18n')
 
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)

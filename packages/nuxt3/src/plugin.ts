@@ -16,7 +16,7 @@ const isEmpty = (obj: any) => Object.keys(obj).length === 0
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default defineNuxtPlugin(async (nuxt: any) => {
-  const { app } = nuxt
+  const { vueApp: app } = nuxt
 
   const loadedOptions = await optionsLoader()
   if (!isEmpty(messages)) {
