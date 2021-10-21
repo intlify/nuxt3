@@ -56,10 +56,11 @@
       "secretlint"
     ]
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intlify/nuxt3.git"
+  },
   "scripts": {
     "fix": "run-p lint:fix format:fix",
     "format:fix": "run-p \"format:prettier -- --write\"",
@@ -70,5 +71,8 @@
     "lint:secret": "secretlint \"**/*\"",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
