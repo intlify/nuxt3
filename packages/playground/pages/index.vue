@@ -1,6 +1,8 @@
 <template>
-  <h1>Hello Nuxt3!</h1>
-  <p>{{ t('hello') }}</p>
+  <div class="container">
+    <h1>Hello Nuxt3!</h1>
+    <p>{{ t('hello') }}</p>
+  </div>
 </template>
 
 <script setup lang="ts">
