@@ -1,6 +1,8 @@
-const execa = require('execa')
-const path = require('path')
-const fs = require('fs').promises
+import execa from 'execa'
+import path from 'path'
+import { promises as fs, readFileSync } from 'fs'
+
+const dirname = path.dirname(new URL(import.meta.url).pathname)
 
 async function readJson(target) {
   const file = await fs.readFile(target, 'utf8')
@@ -13,7 +15,7 @@ function extractSpecificChangelog(changelog, version) {
   }
   const escapedVersion = version.replace(/\./g, '\\.')
   const regex = new RegExp(
-    `(#+?\\s\\[?v?${escapedVersion}\\]?[\\s\\S]*?)(#+?\\s\\[?v?\\d+?\\.\\d+?\\.\\d+?\\]?)`,
+    `(#+?\\s\\[?v?${escapedVersion}\\]?[\\s\\S]*?)(#+?\\s\\[?v?\\d\\.\\d\\.\\d\\]?)`,
     'g'
   )
   const matches = regex.exec(changelog)
@@ -37,7 +39,7 @@ async function commitChangelog(current, next) {
   return fs.writeFile('./CHANGELOG.md', `${head}\n\n${changelog}`)
 }
 
-module.exports = {
+export default {
   mergeStrategy: { toSameBranch: ['main'] },
   monorepo: {
     mainVersionFile: 'package.json',
@@ -45,12 +47,16 @@ module.exports = {
     packagesToPublish: ['packages/nuxt3']
   },
   updateChangelog: false,
-  installCommand: () => 'pnpm install --silent',
-  buildCommand: ({ isYarn, version }) => 'pnpm build:type',
+  installCommand: () => 'yarn install --silent',
+  buildCommand: ({ isYarn, version }) =>
+    'pnpm build --parallel --filter @intlify/nuxt3',
   beforeCommitChanges: async ({ nextVersion, exec, dir }) => {
-    const pkg = await readJson(path.resolve(__dirname, './package.json'))
-    await commitChangelog(pkg.version, nextVersion)
-    await exec('pnpm format:package')
+    return new Promise(async resolve => {
+      const pkg = await readJson(path.resolve(dirname, './package.json'))
+      await commitChangelog(pkg.version, nextVersion)
+      // await exec('yarn fix')
+      resolve()
+    })
   },
   formatCommitMessage: ({ version, releaseType, mergeStrategy, baseBranch }) =>
     `${releaseType} release v${version}`,
@@ -58,10 +64,10 @@ module.exports = {
     `${releaseType} release v${version}`,
   shouldRelease: () => true,
   releases: {
-    extractChangelog: async ({ version, dir }) => {
+    extractChangelog: ({ version, dir }) => {
       const changelogPath = path.resolve(dir, 'CHANGELOG.md')
       try {
-        const changelogFile = await fs.readFile(changelogPath, 'utf-8')
+        const changelogFile = readFileSync(changelogPath, 'utf8')
         const ret = extractSpecificChangelog(changelogFile, version)
         return ret
       } catch (err) {
