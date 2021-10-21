@@ -15,7 +15,7 @@ function extractSpecificChangelog(changelog, version) {
   }
   const escapedVersion = version.replace(/\./g, '\\.')
   const regex = new RegExp(
-    `(#+?\\s\\[?v?${escapedVersion}\\]?[\\s\\S]*?)(#+?\\s\\[?v?\\d\\.\\d\\.\\d\\]?)`,
+    `(#+?\\s\\[?v?${escapedVersion}\\]?[\\s\\S]*?)(#+?\\s\\[?v?\\d+?\\.\\d+?\\.\\d+?\\]?)`,
     'g'
   )
   const matches = regex.exec(changelog)
@@ -30,7 +30,7 @@ async function commitChangelog(current, next) {
   ])
   const escapedVersion = next.replace(/\./g, '\\.')
   const regex = new RegExp(
-    `(#+?\\s\\[?v?${escapedVersion}\\]?[\\s\\S]*?)(#+?\\s\\[?v?\\d\\.\\d\\.\\d\\]?)`,
+    `(#+?\\s\\[?v?${escapedVersion}\\]?[\\s\\S]*?)(#+?\\s\\[?v?\\d+?\\.\\d+?\\.\\d+?\\]?)`,
     'g'
   )
   const matches = regex.exec(stdout.toString())
@@ -54,7 +54,7 @@ export default {
     return new Promise(async resolve => {
       const pkg = await readJson(path.resolve(dirname, './package.json'))
       await commitChangelog(pkg.version, nextVersion)
-      // await exec('yarn fix')
+      await exec('yarn fix')
       resolve()
     })
   },
