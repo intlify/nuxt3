@@ -1,8 +1,6 @@
-import execa from 'execa'
-import path from 'path'
-import { promises as fs } from 'fs'
-
-const dirname = path.dirname(new URL(import.meta.url).pathname)
+const execa = require('execa')
+const path = require('path')
+const fs = require('fs').promises
 
 async function readJson(target) {
   const file = await fs.readFile(target, 'utf8')
@@ -39,7 +37,7 @@ async function commitChangelog(current, next) {
   return fs.writeFile('./CHANGELOG.md', `${head}\n\n${changelog}`)
 }
 
-export default {
+module.exports = {
   mergeStrategy: { toSameBranch: ['main'] },
   monorepo: {
     mainVersionFile: 'package.json',
@@ -50,7 +48,7 @@ export default {
   installCommand: () => 'pnpm install --silent',
   buildCommand: ({ isYarn, version }) => 'pnpm build:type',
   beforeCommitChanges: async ({ nextVersion, exec, dir }) => {
-    const pkg = await readJson(path.resolve(dirname, './package.json'))
+    const pkg = await readJson(path.resolve(__dirname, './package.json'))
     await commitChangelog(pkg.version, nextVersion)
     await exec('pnpm format:package')
   },
