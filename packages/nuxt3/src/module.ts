@@ -11,7 +11,8 @@ import { promises as fs, existsSync } from 'fs'
 import { isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
 import { distDir } from './dirs'
-import { resolveLocales } from './utils'
+import { resolveLocales, isViteMode } from './utils'
+
 import type { I18nOptions } from 'vue-i18n'
 
 /**
@@ -48,28 +49,31 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
       '@intlify/shared/dist/shared.esm-bundler.js'
     )
     nuxt.options.alias['@intlify/shared'] = intlifySharedEntry
-    nuxt.options.vite && nuxt.options.build.transpile.push('@intlify/shared')
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@intlify/shared')
 
     // TODO: should use runtime-only for production
     const intlifyCoreBaseEntry = _require.resolve(
       '@intlify/core-base/dist/core-base.esm-bundler.js'
     )
     nuxt.options.alias['@intlify/core-base'] = intlifyCoreBaseEntry
-    nuxt.options.vite && nuxt.options.build.transpile.push('@intlify/core-base')
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@intlify/core-base')
 
     // TODO: should not set vue-devtools for production
     const vueDevtoolsApiEntry = _require.resolve(
       '@vue/devtools-api/lib/esm/index.js'
     )
     nuxt.options.alias['@vue/devtools-api'] = vueDevtoolsApiEntry
-    nuxt.options.vite && nuxt.options.build.transpile.push('@vue/devtools-api')
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@vue/devtools-api')
 
     // TODO: should not set vue-devtools for production
     const intlifyDevtoolsIfEntry = _require.resolve(
       '@intlify/devtools-if/dist/devtools-if.esm-bundler.js'
     )
     nuxt.options.alias['@intlify/devtools-if'] = intlifyDevtoolsIfEntry
-    nuxt.options.vite &&
+    isViteMode(nuxt.options) &&
       nuxt.options.build.transpile.push('@intlify/devtools-if')
 
     // TODO: should use runtime-only for production
@@ -77,7 +81,7 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
       'vue-i18n/dist/vue-i18n.esm-bundler.js'
     )
     nuxt.options.alias['vue-i18n'] = vueI18nEntry
-    nuxt.options.vite && nuxt.options.build.transpile.push('vue-i18n')
+    isViteMode(nuxt.options) && nuxt.options.build.transpile.push('vue-i18n')
 
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)

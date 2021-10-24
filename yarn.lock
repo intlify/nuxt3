@@ -407,6 +407,7 @@
 "@intlify/nuxt3@link:packages/nuxt3":
   version "0.1.4"
   dependencies:
+    "@intlify/shared" "^9.2.0-beta.15"
     "@intlify/vite-plugin-vue-i18n" "^2.4.0"
     "@intlify/vue-i18n-loader" "^3.0.0"
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
@@ -427,7 +428,7 @@
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.1.9.tgz#0baaf96128b85560666bec784ffb01f6623cc17a"
   integrity sha512-xKGM1d0EAxdDFCWedcYXOm6V5Pfw/TMudd6/qCdEb4tv0hk9EKeg7lwQF1azE0dP2phvx0yXxrt7UQK+IZjNdw==
 
-"@intlify/shared@9.2.0-beta.15":
+"@intlify/shared@9.2.0-beta.15", "@intlify/shared@^9.2.0-beta.15":
   version "9.2.0-beta.15"
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.2.0-beta.15.tgz#5903eba79495f5733fda20782338d5c9fe2dd088"
   integrity sha512-CK1qqrOA2tC8wWM4qldW/hfZ0wbjrSe2MdazUE2HHyhSH7Zt+6SUa0cxujYCZMJ2kd/1ZMs9/w2e7svgYbssTg==

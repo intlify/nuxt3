@@ -1,10 +1,21 @@
 import { resolveFiles } from '@nuxt/kit'
 import { parse } from 'pathe'
+import { isBoolean, isObject } from '@intlify/shared'
+
+import type { NuxtOptions } from '@nuxt/kit'
 
 export type LocaleInfo = {
   locale: string
   filename: string
   path: string
+}
+
+export function isViteMode(options: NuxtOptions): boolean {
+  return options.vite != null
+    ? isBoolean(options.vite)
+      ? options.vite
+      : isObject(options.vite)
+    : true
 }
 
 export async function resolveLocales(path: string): Promise<LocaleInfo[]> {
