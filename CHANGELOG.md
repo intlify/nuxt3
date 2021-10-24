@@ -1,3 +1,14 @@
+## v0.1.6 (2021-10-24)
+
+#### :zap: Improvement Features
+
+- `nuxt3`
+  - [#15](https://github.com/intlify/nuxt3/pull/15) improvement: bump deps ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.1.5 (2021-10-24)
 
 #### :zap: Improvement Features

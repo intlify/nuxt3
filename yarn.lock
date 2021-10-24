@@ -315,41 +315,16 @@
   resolved "https://registry.yarnpkg.com/@hutson/parse-repository-url/-/parse-repository-url-3.0.2.tgz#98c23c950a3d9b6c8f0daed06da6c3af06981340"
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
-"@intlify/bundle-utils@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@intlify/bundle-utils/-/bundle-utils-0.2.0.tgz#ef7feda8b92eaec1f09960fe2d7a66aae0067d31"
-  integrity sha512-P6H+jNT9CqU7d5gMOeaklHYo2vO6sVD7dYFvU7/T5rRBubmEikem7mSFfqMvYnOdIPRxhQSqxGEh+Jj4Act5nQ==
+"@intlify/bundle-utils@next":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@intlify/bundle-utils/-/bundle-utils-2.0.0.tgz#d8c87ea581c066dc74f430aeff7781ddd719ea02"
+  integrity sha512-FcZVN7PD9od+/qZJoTzlQyWdtuukx3JSWSId/sTy4jFJajhNWJ5aW07ZswtrU/ofgzzJaNqT9MpCos6vnDyp1g==
   dependencies:
-    "@intlify/core" "^9.1.6"
-    "@intlify/message-compiler" "^9.1.6"
-    "@intlify/shared" "^9.1.6"
+    "@intlify/message-compiler" beta
+    "@intlify/shared" beta
     jsonc-eslint-parser "^1.0.1"
     source-map "^0.6.1"
     yaml-eslint-parser "^0.3.2"
-
-"@intlify/bundle-utils@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@intlify/bundle-utils/-/bundle-utils-0.3.0.tgz#66d4b68d3135fb2acb73ce1a54e386099f38a52d"
-  integrity sha512-xtb7MHfmBbxE8T7C3WDK+g5YbCDBx1t4dC6b8/lVuBYcQ+l/dYfEF36gbjOJMuiT0zKDI8xURqr1xgnD2eSIwg==
-  dependencies:
-    "@intlify/core" "^9.1.6"
-    "@intlify/message-compiler" "^9.1.6"
-    "@intlify/shared" "^9.1.6"
-    jsonc-eslint-parser "^1.0.1"
-    source-map "^0.6.1"
-    yaml-eslint-parser "^0.3.2"
-
-"@intlify/core-base@9.1.9":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/core-base/-/core-base-9.1.9.tgz#e4e8c951010728e4af3a0d13d74cf3f9e7add7f6"
-  integrity sha512-x5T0p/Ja0S8hs5xs+ImKyYckVkL4CzcEXykVYYV6rcbXxJTe2o58IquSqX9bdncVKbRZP7GlBU1EcRaQEEJ+vw==
-  dependencies:
-    "@intlify/devtools-if" "9.1.9"
-    "@intlify/message-compiler" "9.1.9"
-    "@intlify/message-resolver" "9.1.9"
-    "@intlify/runtime" "9.1.9"
-    "@intlify/shared" "9.1.9"
-    "@intlify/vue-devtools" "9.1.9"
 
 "@intlify/core-base@9.2.0-beta.15":
   version "9.2.0-beta.15"
@@ -361,20 +336,6 @@
     "@intlify/shared" "9.2.0-beta.15"
     "@intlify/vue-devtools" "9.2.0-beta.15"
 
-"@intlify/core@^9.1.6":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/core/-/core-9.1.9.tgz#774e739a2ab4ac460a348a35eb0260e787d50556"
-  integrity sha512-y+B2KaLGYYrbcq4kXhTn9JBphlAyC351l47TMfK9xBEXTXRzgEpXTzTJ23Y85GBwOCembRehQ82sjjtGmJuRjA==
-  dependencies:
-    "@intlify/core-base" "9.1.9"
-
-"@intlify/devtools-if@9.1.9":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/devtools-if/-/devtools-if-9.1.9.tgz#a30e1dd1256ff2c5c98d8d75d075384fba898e5d"
-  integrity sha512-oKSMKjttG3Ut/1UGEZjSdghuP3fwA15zpDPcjkf/1FjlOIm6uIBGMNS5jXzsZy593u+P/YcnrZD6cD3IVFz9vQ==
-  dependencies:
-    "@intlify/shared" "9.1.9"
-
 "@intlify/devtools-if@9.2.0-beta.15":
   version "9.2.0-beta.15"
   resolved "https://registry.yarnpkg.com/@intlify/devtools-if/-/devtools-if-9.2.0-beta.15.tgz#e118aca64148906f6171c10a951aa32e488788a2"
@@ -382,16 +343,7 @@
   dependencies:
     "@intlify/shared" "9.2.0-beta.15"
 
-"@intlify/message-compiler@9.1.9", "@intlify/message-compiler@^9.1.6":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.1.9.tgz#1193cbd224a71c2fb981455b8534a3c766d2948d"
-  integrity sha512-6YgCMF46Xd0IH2hMRLCssZI3gFG4aywidoWQ3QP4RGYQXQYYfFC54DxhSgfIPpVoPLQ+4AD29eoYmhiHZ+qLFQ==
-  dependencies:
-    "@intlify/message-resolver" "9.1.9"
-    "@intlify/shared" "9.1.9"
-    source-map "0.6.1"
-
-"@intlify/message-compiler@9.2.0-beta.15":
+"@intlify/message-compiler@9.2.0-beta.15", "@intlify/message-compiler@beta":
   version "9.2.0-beta.15"
   resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.2.0-beta.15.tgz#cec73087ba3fa2f47313824eedbab28c1c62030f"
   integrity sha512-56iFBp8pUTACViccnGxKz7w9eluXu+KqK6BxlO6zeyZ51BALxAr9T0JZ1KwRCAatmThqVzy+1F94F1UDRIf1VA==
@@ -399,59 +351,31 @@
     "@intlify/shared" "9.2.0-beta.15"
     source-map "0.6.1"
 
-"@intlify/message-resolver@9.1.9":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.1.9.tgz#3155ccd2f5e6d0dc16cad8b7f1d8e97fcda05bfc"
-  integrity sha512-Lx/DBpigeK0sz2BBbzv5mu9/dAlt98HxwbG7xLawC3O2xMF9MNWU5FtOziwYG6TDIjNq0O/3ZbOJAxwITIWXEA==
-
 "@intlify/nuxt3@link:packages/nuxt3":
-  version "0.1.4"
+  version "0.1.6"
   dependencies:
-    "@intlify/shared" "^9.2.0-beta.15"
-    "@intlify/vite-plugin-vue-i18n" "^2.4.0"
-    "@intlify/vue-i18n-loader" "^3.0.0"
+    "@intlify/shared" beta
+    "@intlify/vite-plugin-vue-i18n" next
+    "@intlify/vue-i18n-loader" next
     "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-27249044.7d918e1"
     pathe "^0.2.0"
-    vue-i18n "^9.2.0-beta.15"
+    vue-i18n beta
 
-"@intlify/runtime@9.1.9":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/runtime/-/runtime-9.1.9.tgz#2c12ce29518a075629efed0a8ed293ee740cb285"
-  integrity sha512-XgPw8+UlHCiie3fI41HPVa/VDJb3/aSH7bLhY1hJvlvNV713PFtb4p4Jo+rlE0gAoMsMCGcsiT982fImolSltg==
-  dependencies:
-    "@intlify/message-compiler" "9.1.9"
-    "@intlify/message-resolver" "9.1.9"
-    "@intlify/shared" "9.1.9"
-
-"@intlify/shared@9.1.9", "@intlify/shared@^9.1.6", "@intlify/shared@^9.1.7":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.1.9.tgz#0baaf96128b85560666bec784ffb01f6623cc17a"
-  integrity sha512-xKGM1d0EAxdDFCWedcYXOm6V5Pfw/TMudd6/qCdEb4tv0hk9EKeg7lwQF1azE0dP2phvx0yXxrt7UQK+IZjNdw==
-
-"@intlify/shared@9.2.0-beta.15", "@intlify/shared@^9.2.0-beta.15":
+"@intlify/shared@9.2.0-beta.15", "@intlify/shared@beta":
   version "9.2.0-beta.15"
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.2.0-beta.15.tgz#5903eba79495f5733fda20782338d5c9fe2dd088"
   integrity sha512-CK1qqrOA2tC8wWM4qldW/hfZ0wbjrSe2MdazUE2HHyhSH7Zt+6SUa0cxujYCZMJ2kd/1ZMs9/w2e7svgYbssTg==
 
-"@intlify/vite-plugin-vue-i18n@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-2.4.0.tgz#e122d4dcd83bf7231da8f3c8dec1393c2cb44adb"
-  integrity sha512-DXBvl7JEEcChjrsCUHIBJUSqgAXJSUzbaZskzTuJy5K3FDCX/g9XfHVaw8lCUaW7jYF60BIsPr87sAP1QSGB0Q==
+"@intlify/vite-plugin-vue-i18n@next":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-3.0.0.tgz#e9a8c58f6d6ff08e3c3b984029e9007fa9e66344"
+  integrity sha512-PYNBSSHoPoRpg1Mm0B/KRHhfBC76isCpTXY1er2DXGrGCMT8B7H6kx+t6Nuq25uY4FxzDao8he68dhXor/+Ksg==
   dependencies:
-    "@intlify/bundle-utils" "^0.2.0"
-    "@intlify/shared" "^9.1.6"
+    "@intlify/bundle-utils" next
+    "@intlify/shared" beta
     "@rollup/pluginutils" "^4.1.0"
     debug "^4.3.1"
     fast-glob "^3.2.5"
-
-"@intlify/vue-devtools@9.1.9":
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/@intlify/vue-devtools/-/vue-devtools-9.1.9.tgz#2be8f4dbe7f7ed4115676eb32348141d411e426b"
-  integrity sha512-YPehH9uL4vZcGXky4Ev5qQIITnHKIvsD2GKGXgqf+05osMUI6WSEQHaN9USRa318Rs8RyyPCiDfmA0hRu3k7og==
-  dependencies:
-    "@intlify/message-resolver" "9.1.9"
-    "@intlify/runtime" "9.1.9"
-    "@intlify/shared" "9.1.9"
 
 "@intlify/vue-devtools@9.2.0-beta.15":
   version "9.2.0-beta.15"
@@ -461,13 +385,13 @@
     "@intlify/core-base" "9.2.0-beta.15"
     "@intlify/shared" "9.2.0-beta.15"
 
-"@intlify/vue-i18n-loader@^3.0.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@intlify/vue-i18n-loader/-/vue-i18n-loader-3.2.0.tgz#ed4a60c77dd635171032550c69a11b81309b0b0f"
-  integrity sha512-vPji2Edtwarffd3hqZuOvWpbVlYL9FtLu2U2/bzhGxVptM2Eh8qNM3Fs2GWoAaQbkQb6+nQ/ihiGUK3jFi8++A==
+"@intlify/vue-i18n-loader@next":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@intlify/vue-i18n-loader/-/vue-i18n-loader-4.0.0.tgz#4fe133fea88173dc17d44c5cdb33809a91bf7793"
+  integrity sha512-vj8K9dLAG13HyISR54IXRdWSFpLkGaHnSNEeOmDjp88bQZenODjjZ5pRlsYNgn03vmp7gNqfLGTL8fdxVORJNA==
   dependencies:
-    "@intlify/bundle-utils" "^0.3.0"
-    "@intlify/shared" "^9.1.7"
+    "@intlify/bundle-utils" next
+    "@intlify/shared" beta
     js-yaml "^4.1.0"
     json5 "^2.2.0"
     loader-utils "^2.0.0"
@@ -8142,7 +8066,7 @@ vue-bundle-renderer@^0.3.2:
   dependencies:
     bundle-runner "^0.0.1"
 
-vue-i18n@^9.2.0-beta.15:
+vue-i18n@beta:
   version "9.2.0-beta.15"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-9.2.0-beta.15.tgz#0d1a5802d32e098c09859b15ca6401bec038a52c"
   integrity sha512-Or20jhBXH/ZB7+hBad5OTYHPOSxmoWxnR/XAUO6Vtua1+a84jm3kqptjSVCxD+Svl3Ri1QEQqwAf1MAXtIQmgQ==
