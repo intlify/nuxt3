@@ -18,7 +18,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@intlify/nuxt3": "link:../nuxt3",
+    "@intlify/nuxt3": "^0.1.5",
     "nuxt3": "latest"
   }
 }

@@ -404,16 +404,6 @@
   resolved "https://registry.yarnpkg.com/@intlify/message-resolver/-/message-resolver-9.1.9.tgz#3155ccd2f5e6d0dc16cad8b7f1d8e97fcda05bfc"
   integrity sha512-Lx/DBpigeK0sz2BBbzv5mu9/dAlt98HxwbG7xLawC3O2xMF9MNWU5FtOziwYG6TDIjNq0O/3ZbOJAxwITIWXEA==
 
-"@intlify/nuxt3@link:packages/nuxt3":
-  version "0.1.4"
-  dependencies:
-    "@intlify/shared" "^9.2.0-beta.15"
-    "@intlify/vite-plugin-vue-i18n" "^2.4.0"
-    "@intlify/vue-i18n-loader" "^3.0.0"
-    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-27249044.7d918e1"
-    pathe "^0.2.0"
-    vue-i18n "^9.2.0-beta.15"
-
 "@intlify/runtime@9.1.9":
   version "9.1.9"
   resolved "https://registry.yarnpkg.com/@intlify/runtime/-/runtime-9.1.9.tgz#2c12ce29518a075629efed0a8ed293ee740cb285"
