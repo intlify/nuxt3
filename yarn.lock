@@ -410,7 +410,7 @@
     "@intlify/shared" "^9.2.0-beta.15"
     "@intlify/vite-plugin-vue-i18n" "^2.4.0"
     "@intlify/vue-i18n-loader" "^3.0.0"
-    "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
+    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.0-27249044.7d918e1"
     pathe "^0.2.0"
     vue-i18n "^9.2.0-beta.15"
 
@@ -549,7 +549,7 @@
     error-stack-parser "^2.0.0"
     string-width "^4.2.3"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-27249044.7d918e1", "@nuxt/kit@npm:@nuxt/kit-edge@latest":
+"@nuxt/kit@npm:@nuxt/kit-edge@3.0.0-27249044.7d918e1":
   version "3.0.0-27249044.7d918e1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27249044.7d918e1.tgz#9d4f0e783b61cb358677943ef65e755ae34e4473"
   integrity sha512-Ou0lsh+h8u2RsF6N+orH/HJH1MYAfPxyy9K6AAKhjfwcN1wrKVw4JPBlej/LvKgYQL5pfphuCAFtC95MPHdNDw==

@@ -48,8 +48,7 @@ export default {
   },
   updateChangelog: false,
   installCommand: () => 'yarn install --silent',
-  buildCommand: ({ isYarn, version }) =>
-    'pnpm build --parallel --filter @intlify/nuxt3',
+  buildCommand: ({ isYarn, version }) => 'yarn build',
   beforeCommitChanges: async ({ nextVersion, exec, dir }) => {
     return new Promise(async resolve => {
       const pkg = await readJson(path.resolve(dirname, './package.json'))
