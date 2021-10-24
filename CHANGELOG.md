@@ -1,3 +1,14 @@
+## v0.1.5 (2021-10-24)
+
+#### :zap: Improvement Features
+
+- `nuxt3`, `playground`
+  - [#13](https://github.com/intlify/nuxt3/pull/13) module resolving for both bundler ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.1.4 (2021-10-22)
 
 ## v0.1.3 (2021-10-14)
