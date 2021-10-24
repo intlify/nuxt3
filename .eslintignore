@@ -2,3 +2,5 @@ dist
 coverage
 ship.config.js
 packages/playground
+.output
+.nuxt

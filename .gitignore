@@ -6,7 +6,6 @@ node_modules
 .idea
 .vscode
 debug.log
-.nuxt
 
 *.log
 *.swp
@@ -16,3 +15,6 @@ debug.log
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
+
+.nuxt
+.output
