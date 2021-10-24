@@ -1,15 +1,18 @@
 import {
   defineNuxtModule,
-  addPlugin,
   addTemplate,
+  addPluginTemplate,
   extendWebpackConfig,
   extendViteConfig
 } from '@nuxt/kit'
+import { createRequire } from 'module'
 import { resolve } from 'pathe'
 import { promises as fs, existsSync } from 'fs'
 import { isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
-import { resolveLocales } from './utils'
+import { distDir } from './dirs'
+import { resolveLocales, isViteMode } from './utils'
+
 import type { I18nOptions } from 'vue-i18n'
 
 /**
@@ -40,9 +43,45 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   configKey: 'intlify',
   defaults: {},
   async setup(options, nuxt) {
-    nuxt.options.alias['vue-i18n'] = 'vue-i18n/dist/vue-i18n.esm-bundler.js'
-    // nuxt.options.alias['vue-i18n'] = 'vue-i18n/index.mjs'
-    nuxt.options.build.transpile.push('vue-i18n')
+    const _require = createRequire(import.meta.url)
+
+    const intlifySharedEntry = _require.resolve(
+      '@intlify/shared/dist/shared.esm-bundler.js'
+    )
+    nuxt.options.alias['@intlify/shared'] = intlifySharedEntry
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@intlify/shared')
+
+    // TODO: should use runtime-only for production
+    const intlifyCoreBaseEntry = _require.resolve(
+      '@intlify/core-base/dist/core-base.esm-bundler.js'
+    )
+    nuxt.options.alias['@intlify/core-base'] = intlifyCoreBaseEntry
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@intlify/core-base')
+
+    // TODO: should not set vue-devtools for production
+    const vueDevtoolsApiEntry = _require.resolve(
+      '@vue/devtools-api/lib/esm/index.js'
+    )
+    nuxt.options.alias['@vue/devtools-api'] = vueDevtoolsApiEntry
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@vue/devtools-api')
+
+    // TODO: should not set vue-devtools for production
+    const intlifyDevtoolsIfEntry = _require.resolve(
+      '@intlify/devtools-if/dist/devtools-if.esm-bundler.js'
+    )
+    nuxt.options.alias['@intlify/devtools-if'] = intlifyDevtoolsIfEntry
+    isViteMode(nuxt.options) &&
+      nuxt.options.build.transpile.push('@intlify/devtools-if')
+
+    // TODO: should use runtime-only for production
+    const vueI18nEntry = _require.resolve(
+      'vue-i18n/dist/vue-i18n.esm-bundler.js'
+    )
+    nuxt.options.alias['vue-i18n'] = vueI18nEntry
+    isViteMode(nuxt.options) && nuxt.options.build.transpile.push('vue-i18n')
 
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)
@@ -77,8 +116,9 @@ export default ${name}
     }
 
     // add plugin
-    addPlugin({
-      src: resolve(__dirname, './plugin.mjs')
+    addPluginTemplate({
+      filename: 'plugin.mjs',
+      src: resolve(distDir, 'runtime/plugin.mjs')
     })
 
     // add locale messages template

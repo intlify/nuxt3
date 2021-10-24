@@ -12,3 +12,6 @@ scripts
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
+
+.nuxt
+.output

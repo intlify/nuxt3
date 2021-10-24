@@ -18,29 +18,34 @@
   },
   "sideEffects": false,
   "exports": {
-    "import": "./dist/module.mjs",
-    "require": "./dist/module.cjs"
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    },
+    "./dist/runtime/*": "./dist/runtime/*",
+    "./runtime/*": "./dist/runtime/*"
   },
   "main": "./dist/module.cjs",
   "module": "./dist/module.mjs",
   "types": "./dist/module.d.ts",
   "files": [
-    "dist/module.cjs",
-    "dist/module.mjs",
-    "dist/plugin.cjs",
-    "dist/plugin.mjs",
-    "dist/module.d.ts"
+    "dist/*.cjs",
+    "dist/*.mjs",
+    "dist/*.d.ts",
+    "dist/runtime/*.cjs",
+    "dist/runtime/*.mjs",
+    "dist/runtime/*.d.ts"
   ],
   "scripts": {
     "build": "unbuild"
   },
   "dependencies": {
-    "@intlify/shared": "^9.2.0-beta.13",
+    "@intlify/shared": "^9.2.0-beta.15",
     "@intlify/vite-plugin-vue-i18n": "^2.4.0",
     "@intlify/vue-i18n-loader": "^3.0.0",
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "pathe": "^0.2.0",
-    "vue-i18n": "^9.2.0-beta.13"
+    "vue-i18n": "^9.2.0-beta.15"
   },
   "devDependencies": {
     "unbuild": "^0.5.7"
