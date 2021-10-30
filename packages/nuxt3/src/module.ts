@@ -11,7 +11,7 @@ import { promises as fs, existsSync } from 'fs'
 import { isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
 import { distDir } from './dirs'
-import { resolveLocales, isViteMode } from './utils'
+import { resolveLocales, isViteMode, setupAliasTranspileOptions } from './utils'
 
 import type { I18nOptions } from 'vue-i18n'
 
@@ -38,6 +38,24 @@ export function defineVueI18n(options: I18nOptions): I18nOptions {
   return options
 }
 
+const MODULE_DEV_ENTRIES = {
+  '@intlify/shared': '@intlify/shared/dist/shared.esm-bundler.js',
+  '@intlify/core-base': '@intlify/core-base/dist/core-base.esm-bundler.js',
+  '@vue/devtools-api': '@vue/devtools-api/lib/esm/index.js',
+  '@intlify/devtools-if':
+    '@intlify/devtools-if/dist/devtools-if.esm-bundler.js',
+  'vue-i18n': 'vue-i18n/dist/vue-i18n.esm-bundler.js'
+}
+
+const MODULE_PROD_ENTRIES = {
+  '@intlify/shared': '@intlify/shared/dist/shared.esm-bundler.js',
+  '@intlify/core-base': '@intlify/core-base/dist/core-base.esm-bundler.js',
+  '@vue/devtools-api': '@vue/devtools-api/lib/esm/index.js',
+  '@intlify/devtools-if':
+    '@intlify/devtools-if/dist/devtools-if.esm-bundler.js',
+  'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+}
+
 const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   name: '@intlify/nuxt3',
   configKey: 'intlify',
@@ -45,43 +63,11 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
   async setup(options, nuxt) {
     const _require = createRequire(import.meta.url)
 
-    const intlifySharedEntry = _require.resolve(
-      '@intlify/shared/dist/shared.esm-bundler.js'
-    )
-    nuxt.options.alias['@intlify/shared'] = intlifySharedEntry
-    isViteMode(nuxt.options) &&
-      nuxt.options.build.transpile.push('@intlify/shared')
-
-    // TODO: should use runtime-only for production
-    const intlifyCoreBaseEntry = _require.resolve(
-      '@intlify/core-base/dist/core-base.esm-bundler.js'
-    )
-    nuxt.options.alias['@intlify/core-base'] = intlifyCoreBaseEntry
-    isViteMode(nuxt.options) &&
-      nuxt.options.build.transpile.push('@intlify/core-base')
-
-    // TODO: should not set vue-devtools for production
-    const vueDevtoolsApiEntry = _require.resolve(
-      '@vue/devtools-api/lib/esm/index.js'
-    )
-    nuxt.options.alias['@vue/devtools-api'] = vueDevtoolsApiEntry
-    isViteMode(nuxt.options) &&
-      nuxt.options.build.transpile.push('@vue/devtools-api')
-
-    // TODO: should not set vue-devtools for production
-    const intlifyDevtoolsIfEntry = _require.resolve(
-      '@intlify/devtools-if/dist/devtools-if.esm-bundler.js'
-    )
-    nuxt.options.alias['@intlify/devtools-if'] = intlifyDevtoolsIfEntry
-    isViteMode(nuxt.options) &&
-      nuxt.options.build.transpile.push('@intlify/devtools-if')
-
-    // TODO: should use runtime-only for production
-    const vueI18nEntry = _require.resolve(
-      'vue-i18n/dist/vue-i18n.esm-bundler.js'
-    )
-    nuxt.options.alias['vue-i18n'] = vueI18nEntry
-    isViteMode(nuxt.options) && nuxt.options.build.transpile.push('vue-i18n')
+    for (const [name, entry] of Object.entries(
+      nuxt.options.dev ? MODULE_DEV_ENTRIES : MODULE_PROD_ENTRIES
+    )) {
+      setupAliasTranspileOptions(nuxt, name, _require.resolve(entry))
+    }
 
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)
@@ -154,10 +140,31 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
         type: 'javascript/auto',
         loader: '@intlify/vue-i18n-loader'
       })
+
+      if (!nuxt.options.dev) {
+        // @ts-ignore TODO
+        ;(config.resolve?.alias as any)['vue-i18n'] =
+          'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+      }
+
+      // TODO: unplugin implementation
+      // config.plugins?.push(webpack.DefinePlugin, [
+      //   {
+      //     __VUE_I18N_LEGACY_API__: legacyApiFlag,
+      //     __VUE_I18N_FULL_INSTALL__: installFlag,
+      //     __VUE_I18N_PROD_DEVTOOLS__: 'false'
+      //   }
+      // ])
     })
 
     // install @intlify/vite-plugin-vue-i18n
     extendViteConfig(config => {
+      // TODO: unplugin implementation
+      if (!nuxt.options.dev) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ;(config.resolve?.alias as any)['vue-i18n'] =
+          'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const viteOptions: any = {
         compositionOnly: false
