@@ -1,3 +1,14 @@
+## v0.1.7 (2021-10-30)
+
+#### :zap: Improvement Features
+
+- `nuxt3`
+  - [#17](https://github.com/intlify/nuxt3/pull/17) improvement: tweak alias transpile option for production ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.1.6 (2021-10-24)
 
 #### :zap: Improvement Features
