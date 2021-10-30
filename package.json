@@ -65,6 +65,7 @@
     "build": "cd packages/nuxt3 && yarn build",
     "build:play": "cd packages/playground && yarn build",
     "play": "cd packages/playground && yarn dev",
+    "start": "cd packages/playground && yarn start",
     "fix": "run-p lint:fix format:fix",
     "format:fix": "run-p \"format:prettier -- --write\"",
     "format:prettier": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",

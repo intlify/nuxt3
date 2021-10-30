@@ -2,7 +2,7 @@ import { resolveFiles } from '@nuxt/kit'
 import { parse } from 'pathe'
 import { isBoolean, isObject } from '@intlify/shared'
 
-import type { NuxtOptions } from '@nuxt/kit'
+import type { NuxtOptions, Nuxt } from '@nuxt/kit'
 
 export type LocaleInfo = {
   locale: string
@@ -16,6 +16,15 @@ export function isViteMode(options: NuxtOptions): boolean {
       ? options.vite
       : isObject(options.vite)
     : true
+}
+
+export function setupAliasTranspileOptions(
+  nuxt: Nuxt,
+  name: string,
+  entry: string
+): void {
+  nuxt.options.alias[name] = entry
+  isViteMode(nuxt.options) && nuxt.options.build.transpile.push(name)
 }
 
 export async function resolveLocales(path: string): Promise<LocaleInfo[]> {
