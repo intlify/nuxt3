@@ -45,10 +45,14 @@
     "@intlify/vue-i18n-loader": "next",
     "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-27249044.7d918e1",
     "pathe": "^0.2.0",
+    "ufo": "^0.7.9",
+    "debug": "^4.3.2",
+    "unplugin": "^0.2.19",
     "vue-i18n": "beta"
   },
   "devDependencies": {
-    "unbuild": "^0.5.7"
+    "unbuild": "^0.5.7",
+    "@types/debug": "^4.1.5"
   },
   "publishConfig": {
     "access": "public"

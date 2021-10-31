@@ -150,7 +150,7 @@ The following is a set of files of locale resources defined in the directory:
 
 The locale messages defined above will be loaded by the `@intlify/nuxt3` module and set to the `messages` option of `createI18n` on the module side.
 
-Each locale in the `messages` option is defined as a file name without its extension.
+Each locale in the `messages` option is used as a file name without its extension. For example, In the `locales` directory above, `en.json` will use `en` as the locale.
 
 ## ©️ LICENSE
 

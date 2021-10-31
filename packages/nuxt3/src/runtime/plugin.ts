@@ -5,7 +5,7 @@ import { defineNuxtPlugin } from '#app'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: resolved with Nuxt
-import optionsLoader from '#build/intlify.options.mjs'
+import optionsLoader from '#build/intlify.vuei18n.options.mjs'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: resolved with Nuxt

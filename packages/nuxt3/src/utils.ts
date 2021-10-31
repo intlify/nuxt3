@@ -1,5 +1,6 @@
 import { resolveFiles } from '@nuxt/kit'
 import { parse } from 'pathe'
+import { promises as fs } from 'fs'
 import { isBoolean, isObject } from '@intlify/shared'
 
 import type { NuxtOptions, Nuxt } from '@nuxt/kit'
@@ -37,4 +38,13 @@ export async function resolveLocales(path: string): Promise<LocaleInfo[]> {
       locale: parsed.name
     }
   })
+}
+
+export async function exists(path: string): Promise<boolean> {
+  try {
+    await fs.access(path)
+    return true
+  } catch (e) {
+    return false
+  }
 }
