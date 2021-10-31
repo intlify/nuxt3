@@ -1,3 +1,14 @@
+## v0.1.8 (2021-10-31)
+
+#### :zap: Improvement Features
+
+- `nuxt3`, `playground`
+  - [#19](https://github.com/intlify/nuxt3/pull/19) improvement: vue-i18n option loading ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.1.7 (2021-10-30)
 
 #### :zap: Improvement Features
