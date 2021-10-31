@@ -3,36 +3,27 @@ import {
   addTemplate,
   addPluginTemplate,
   extendWebpackConfig,
-  extendViteConfig
+  extendViteConfig,
+  addWebpackPlugin,
+  addVitePlugin
 } from '@nuxt/kit'
 import { createRequire } from 'module'
 import { resolve } from 'pathe'
-import { promises as fs, existsSync } from 'fs'
-import { isString } from '@intlify/shared'
+import { isObject, isString } from '@intlify/shared'
 import VitePlugin from '@intlify/vite-plugin-vue-i18n'
 import { distDir } from './dirs'
-import { resolveLocales, isViteMode, setupAliasTranspileOptions } from './utils'
+import { exists, resolveLocales, setupAliasTranspileOptions } from './utils'
+import { optionLoader } from './loader'
+import {
+  INTLIFY_VUEI18N_OPTIONS_VIRTUAL_FILENAME,
+  INTLIFY_LOCALE_VIRTUAL_FILENAME
+} from './constants'
 
 import type { I18nOptions } from 'vue-i18n'
+import type { IntlifyModuleOptions } from './types'
+import type { LoaderOptions } from './loader'
 
-/**
- * `@intlify/nuxt3` module options definition
- */
-export interface IntlifyModuleOptions {
-  /**
-   * Options specified for `createI18n` in vue-i18n.
-   *
-   * If you want to specify not only objects but also functions such as messages functions and modifiers for the option, specify the path where the option is defined.
-   * The path should be relative to the Nuxt project.
-   */
-  vueI18n?: I18nOptions | string
-  /**
-   * Define the directory where your locale messages files will be placed.
-   *
-   * If you don't specify this option, default value is `locales`
-   */
-  localeDir?: string
-}
+export * from './types'
 
 export function defineVueI18n(options: I18nOptions): I18nOptions {
   return options
@@ -71,35 +62,27 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
 
     const localeDir = options.localeDir || 'locales'
     const localePath = resolve(nuxt.options.srcDir, localeDir)
-    const hasLocaleFiles = existsSync(localePath)
+    const hasLocaleFiles = await exists(localePath)
     const localeResources = (await resolveLocales(localePath)) || []
 
     // add vue-i18n options template
-    if (!isString(options.vueI18n)) {
-      addTemplate({
-        filename: 'intlify.options.mjs',
-        getContents: ({ utils }) => {
-          const name = utils.importName(`vueI18n_options_obj`)
-          // prettier-ignore
-          return `
-const ${name} = () => Promise.resolve(${JSON.stringify(options.vueI18n || {})})\n
-export default ${name}
-`
-        }
-      })
-    } else {
-      addTemplate({
-        filename: 'intlify.options.mjs',
-        async getContents() {
-          const file = await fs.readFile(
-            resolve(nuxt.options.rootDir, options.vueI18n as string),
-            'utf-8'
-          )
-          // TODO: check file content, whether it's valid async syntax
-          return `${file}`
-        }
-      })
+    addTemplate({
+      filename: INTLIFY_VUEI18N_OPTIONS_VIRTUAL_FILENAME,
+      getContents: () => {
+        return `${nuxt.options.dev ? "// 'vueI18n' option loading ..." : ''}`
+      }
+    })
+
+    // prettier-ignore
+    const loaderOptions: LoaderOptions = {
+      vueI18n: isObject(options.vueI18n)
+        ? options.vueI18n
+        : isString(options.vueI18n)
+          ? resolve(nuxt.options.rootDir, options.vueI18n)
+          : undefined
     }
+    addWebpackPlugin(optionLoader.webpack(loaderOptions))
+    addVitePlugin(optionLoader.vite(loaderOptions))
 
     // add plugin
     addPluginTemplate({
@@ -109,7 +92,7 @@ export default ${name}
 
     // add locale messages template
     addTemplate({
-      filename: 'intlify.locales.mjs',
+      filename: INTLIFY_LOCALE_VIRTUAL_FILENAME,
       getContents: ({ utils }) => {
         const importMapper = new Map<string, string>()
         localeResources.forEach(({ locale }) => {
