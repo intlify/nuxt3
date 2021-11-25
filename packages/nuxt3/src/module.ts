@@ -125,7 +125,7 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
       })
 
       if (!nuxt.options.dev) {
-        // @ts-ignore TODO
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ;(config.resolve?.alias as any)['vue-i18n'] =
           'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
       }
