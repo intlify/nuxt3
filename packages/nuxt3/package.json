@@ -1,6 +1,6 @@
 {
   "name": "@intlify/nuxt3",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Nuxt3 module for vue-i18n-next",
   "homepage": "https://github.com/intlify/packages/nuxt3/tree/main#readme",
   "bugs": {
