@@ -1,3 +1,14 @@
+## v0.1.9 (2021-11-25)
+
+#### :zap: Improvement Features
+
+- `nuxt3`
+  - [#28](https://github.com/intlify/nuxt3/pull/28) change @nuxt/kit version to 3.0.0-27277498.850ef69 ([@SuperBuba](https://github.com/SuperBuba))
+
+#### Committers: 1
+
+- [@SuperBuba](https://github.com/SuperBuba)
+
 ## v0.1.8 (2021-10-31)
 
 #### :zap: Improvement Features
