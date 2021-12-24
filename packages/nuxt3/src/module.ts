@@ -114,7 +114,7 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
           test: /\.(json5?|ya?ml)$/,
           type: 'javascript/auto',
           loader: '@intlify/vue-i18n-loader',
-          include: [localePath]
+          include: [resolve(localePath, './**')]
         })
       }
       // @ts-ignore TODO
