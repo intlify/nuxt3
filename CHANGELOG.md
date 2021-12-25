@@ -1,3 +1,14 @@
+## v0.1.10 (2021-12-25)
+
+#### :zap: Improvement Features
+
+- `nuxt3`
+  - [#33](https://github.com/intlify/nuxt3/pull/33) fix: include all files from local path in webpack ([@killix](https://github.com/killix))
+
+#### Committers: 1
+
+- Issam Hakimi ([@killix](https://github.com/killix))
+
 ## v0.1.9 (2021-11-25)
 
 #### :zap: Improvement Features
