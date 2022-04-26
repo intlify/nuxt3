@@ -10,7 +10,7 @@ import {
 import { createRequire } from 'module'
 import { resolve } from 'pathe'
 import { isObject, isString } from '@intlify/shared'
-import VitePlugin from '@intlify/vite-plugin-vue-i18n'
+import { vueI18n as VitePlugin } from '@intlify/vite-plugin-vue-i18n'
 import { distDir } from './dirs'
 import { exists, resolveLocales, setupAliasTranspileOptions } from './utils'
 import { optionLoader } from './loader'
@@ -48,8 +48,10 @@ const MODULE_PROD_ENTRIES = {
 }
 
 const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
-  name: '@intlify/nuxt3',
-  configKey: 'intlify',
+  meta: {
+    name: '@intlify/nuxt3',
+    configKey: 'intlify'
+  },
   defaults: {},
   async setup(options, nuxt) {
     const _require = createRequire(import.meta.url)
@@ -109,7 +111,6 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
     // install @intlify/vue-i18n-loader
     extendWebpackConfig(config => {
       if (hasLocaleFiles) {
-        // @ts-ignore TODO
         config.module?.rules.push({
           test: /\.(json5?|ya?ml)$/,
           type: 'javascript/auto',
@@ -117,7 +118,6 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
           include: [resolve(localePath, './**')]
         })
       }
-      // @ts-ignore TODO
       config.module?.rules.push({
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
@@ -155,10 +155,15 @@ export default { ${[...importMapper].map(i => `${JSON.stringify(i[0])}:${i[1]}`)
       if (hasLocaleFiles) {
         viteOptions['include'] = resolve(localePath, './**')
       }
-      // @ts-ignore TODO
-      config.plugins.push(VitePlugin(viteOptions))
+      config.plugins?.push(VitePlugin(viteOptions))
     })
   }
 })
 
 export default IntlifyModule
+
+declare module '@nuxt/schema' {
+  interface NuxtConfig {
+    intlify?: IntlifyModuleOptions
+  }
+}

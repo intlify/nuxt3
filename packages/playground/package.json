@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "@intlify/nuxt3": "link:../nuxt3",
-    "nuxt3": "latest"
+    "nuxt": "^3.0.0-rc.1"
   }
 }

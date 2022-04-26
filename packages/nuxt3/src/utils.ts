@@ -3,7 +3,7 @@ import { parse } from 'pathe'
 import { promises as fs } from 'fs'
 import { isBoolean, isObject } from '@intlify/shared'
 
-import type { NuxtOptions, Nuxt } from '@nuxt/kit'
+import type { NuxtOptions, Nuxt } from '@nuxt/schema'
 
 export type LocaleInfo = {
   locale: string
