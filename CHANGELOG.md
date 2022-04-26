@@ -1,3 +1,20 @@
+## v0.2.0 (2022-04-26)
+
+#### :star: Features
+
+- `nuxt3`, `playground`
+  - [#53](https://github.com/intlify/nuxt3/pull/53) feat: support nuxt3 rc version ([@kazupon](https://github.com/kazupon))
+
+#### :zap: Improvement Features
+
+- `nuxt3`
+  - [#52](https://github.com/intlify/nuxt3/pull/52) fix: use the latest @nuxt/kit ([@antfu](https://github.com/antfu))
+
+#### Committers: 2
+
+- Anthony Fu ([@antfu](https://github.com/antfu))
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.1.10 (2021-12-25)
 
 #### :zap: Improvement Features
