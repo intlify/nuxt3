@@ -29,12 +29,7 @@
   "module": "./dist/module.mjs",
   "types": "./dist/module.d.ts",
   "files": [
-    "dist/*.cjs",
-    "dist/*.mjs",
-    "dist/*.d.ts",
-    "dist/runtime/*.cjs",
-    "dist/runtime/*.mjs",
-    "dist/runtime/*.d.ts"
+    "dist"
   ],
   "scripts": {
     "build": "nuxt-module-build",
