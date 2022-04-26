@@ -1,3 +1,14 @@
+## v0.2.1 (2022-04-26)
+
+#### :bug: Bug Fixes
+
+- `nuxt3`
+  - [#58](https://github.com/intlify/nuxt3/pull/58) fix: dist files ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.2.0 (2022-04-26)
 
 #### :star: Features
