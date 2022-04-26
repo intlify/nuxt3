@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   buildModules: ['@intlify/nuxt3'],
@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   intlify: {
     localeDir: 'lang',
     vueI18n: {
-      locale: 'en',
+      locale: 'ja',
       messages: {
         en: {
           hello: 'Hello, {name}!',
