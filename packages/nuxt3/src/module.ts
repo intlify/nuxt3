@@ -70,6 +70,7 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
     // add vue-i18n options template
     addTemplate({
       filename: INTLIFY_VUEI18N_OPTIONS_VIRTUAL_FILENAME,
+      write: true,
       getContents: () => {
         return `${nuxt.options.dev ? "// 'vueI18n' option loading ..." : ''}`
       }
