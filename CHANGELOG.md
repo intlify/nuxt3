@@ -1,3 +1,14 @@
+## v0.2.2 (2022-05-18)
+
+#### :bug: Bug Fixes
+
+- `nuxt3`
+  - [#65](https://github.com/intlify/nuxt3/pull/65) Set write to true for vue-i18n options addTemplate ([@FlyingWraptor](https://github.com/FlyingWraptor))
+
+#### Committers: 1
+
+- Thibaut Nijs ([@FlyingWraptor](https://github.com/FlyingWraptor))
+
 ## v0.2.1 (2022-04-26)
 
 #### :bug: Bug Fixes
