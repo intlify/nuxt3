@@ -26,13 +26,13 @@ npm install --save-dev @intlify/nuxt3
 yarn add -D @intlify/nuxt3
 ```
 
-After the installation in the previous section, you need to add `@intlify/nuxt3` module to `buildModules` options of `nuxt.confg.[ts|js]`
+After the installation in the previous section, you need to add `@intlify/nuxt3` module to `modules` options of `nuxt.confg.[ts|js]`
 
 ```js
 // nuxt.config.js
 export default {
   // ...
-  buildModules: ['@intlify/nuxt3']
+  modules: ['@intlify/nuxt3']
   // ...
 }
 ```
@@ -66,7 +66,7 @@ nuxt.config below:
 ```js
 export default {
   // ...
-  buildModules: ['@intlify/nuxt3'],
+  modules: ['@intlify/nuxt3'],
   // config for `@intlify/nuxt3`
   intlify: {
     vueI18n: {
@@ -87,12 +87,12 @@ export default {
 
 If you specify the path to `intlify.vueI18n`, you need to set it to a file in `mjs` format.
 
-The following nuxt.config:
+The following ˋnuxt.config`:
 
 ```js
 export default {
   // ...
-  buildModules: ['@intlify/nuxt3'],
+  modules: ['@intlify/nuxt3'],
   // config for `@intlify/nuxt3`
   intlify: {
     vueI18n: 'vue-i18n.mjs'
@@ -126,7 +126,7 @@ The following is an example of the nuxt.conf:
 ```js
 export default {
   // ...
-  buildModules: ['@intlify/nuxt3'],
+  modules: ['@intlify/nuxt3'],
   // config for `@intlify/nuxt3`
   intlify: {
     localeDir: 'locales', // set the `locales` directory at source directory of your Nuxt application
