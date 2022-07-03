@@ -72,7 +72,9 @@ const IntlifyModule = defineNuxtModule<IntlifyModuleOptions>({
       filename: INTLIFY_VUEI18N_OPTIONS_VIRTUAL_FILENAME,
       write: true,
       getContents: () => {
-        return `${nuxt.options.dev ? "// 'vueI18n' option loading ..." : ''}`
+        return `export default () => Promise.resolve(${JSON.stringify(
+          options.vueI18n || {}
+        )})`
       }
     })
 

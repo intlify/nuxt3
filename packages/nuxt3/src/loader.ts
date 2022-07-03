@@ -16,8 +16,7 @@ export const optionLoader = createUnplugin((options: LoaderOptions = {}) => ({
   enforce: 'post',
 
   transformInclude(id) {
-    const { pathname } = parseURL(id)
-    return pathname.endsWith(INTLIFY_VUEI18N_OPTIONS_VIRTUAL_FILENAME)
+    return false
   },
 
   async transform(code) {
