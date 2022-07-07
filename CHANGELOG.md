@@ -1,3 +1,15 @@
+## v0.2.3 (2022-07-07)
+
+#### :bug: Bug Fixes
+
+- `nuxt3`
+  - [#73](https://github.com/intlify/nuxt3/pull/73) fix : #68 default is not a function problem. ([@ZCube](https://github.com/ZCube))
+
+#### Committers: 2
+
+- Sébastien Chopin ([@Atinux](https://github.com/Atinux))
+- ZCube ([@ZCube](https://github.com/ZCube))
+
 ## v0.2.2 (2022-05-18)
 
 #### :bug: Bug Fixes
