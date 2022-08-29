@@ -1,3 +1,14 @@
+## v0.2.4 (2022-08-29)
+
+#### :bug: Bug Fixes
+
+- `nuxt3`
+  - [#87](https://github.com/intlify/nuxt3/pull/87) fix: pinned latest stable version ([@kazupon](https://github.com/kazupon))
+
+#### Committers: 1
+
+- kazuya kawaguchi ([@kazupon](https://github.com/kazupon))
+
 ## v0.2.3 (2022-07-07)
 
 #### :bug: Bug Fixes
