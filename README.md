@@ -2,6 +2,10 @@
 
 Nuxt3 module for vue-i18n-next
 
+## ** ⚠️ IMPORTANT**
+
+**This project is maintenance mode, because I'm forcusing [@nuxtjs/i18n](https://v8.i18n.nuxtjs.org/). We would recommend to use it**
+
 ## ❓ What is defference from `@nuxtjs/i18n` ?
 
 This nuxt module is intended to be a quick and easy way for people to use vue-i18n-next with Nuxt3.
