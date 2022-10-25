@@ -6,12 +6,12 @@ Nuxt3 module for vue-i18n-next
 
 This nuxt module is intended to be a quick and easy way for people to use vue-i18n-next with Nuxt3.
 
-It also has the purpose of finding issues on the vue-i18n-next so that `@nuxtjs/i18n` can support Nuxt3.
+It also has the purpose of finding issues on the vue-i18n-next so that [`@nuxtjs/i18n`](https://github.com/nuxt-community/i18n-module) can support Nuxt3.
 
 - Setup `vue-i18n` for your Nuxt3 project
   - You do not need to entrypoint codes with `createI18n`.
 - Setup bundle tools
-  - `@intlify/vue-i18n-loader` and `@intlify/vite-plugin-vue-i18n` are included
+  - [`@intlify/vue-i18n-loader`](https://github.com/intlify/vue-i18n-loader) and [`@intlify/vite-plugin-vue-i18n`](https://github.com/intlify/vite-plugin-vue-i18n) are included
 - Locale resources importing
 
 ## 💿 Installation
