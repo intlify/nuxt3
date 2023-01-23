@@ -16,6 +16,9 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
+  "contributors": [
+    "Rohamgames <Rohamgames@gmail.com> (https://github.com/rohamgames)"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
