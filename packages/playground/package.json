@@ -12,6 +12,9 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
+  "contributors": [
+    "Rohamgames <Rohamgames@gmail.com> (https://github.com/rohamgames)"
+  ],
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -19,6 +22,6 @@
   },
   "devDependencies": {
     "@intlify/nuxt3": "link:../nuxt3",
-    "nuxt": "^3.0.0-rc.1"
+    "nuxt": "^3.0.0"
   }
 }

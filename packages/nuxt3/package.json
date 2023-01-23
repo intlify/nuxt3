@@ -1,6 +1,6 @@
 {
   "name": "@intlify/nuxt3",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Nuxt3 module for vue-i18n-next",
   "homepage": "https://github.com/intlify/packages/nuxt3/tree/main#readme",
   "bugs": {
@@ -16,6 +16,9 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
+  "contributors": [
+    "Rohamgames <Rohamgames@gmail.com> (https://github.com/rohamgames)"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -40,19 +43,19 @@
     "@intlify/vite-plugin-vue-i18n": "4.0.0",
     "@intlify/vue-i18n-loader": "next",
     "@nuxt/kit": "latest",
-    "pathe": "^0.2.0",
-    "ufo": "^0.8.3",
-    "debug": "^4.3.2",
-    "unplugin": "^0.6.2",
+    "pathe": "^1.1.0",
+    "ufo": "^1.0.1",
+    "debug": "^4.3.4",
+    "unplugin": "^1.0.1",
     "vue-i18n": "latest"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
-    "@nuxt/schema": "^3.0.0-rc.1",
-    "@types/debug": "^4.1.5"
+    "@nuxt/schema": "^3.0.0",
+    "@types/debug": "^4.1.7"
   },
   "engines": {
-    "node": "^14.16.0 || ^16.11.0 || ^17.0.0"
+    "node": "^14.16.0 || ^16.11.0 || ^18.0.0"
   },
   "publishConfig": {
     "access": "public"
